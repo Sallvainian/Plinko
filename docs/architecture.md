@@ -18,19 +18,19 @@ Focused on areas relevant to the enhancement of the Plinko game simulation, as d
 
 ### Critical Files for Understanding the System
 
-* **Main Entry**: `src/routes/+page.svelte` (Main Svelte component for the game)
-* **Configuration**: `src/lib/constants/game.ts` (Game constants and settings)
-* **Core Business Logic**: `src/lib/components/Plinko/PlinkoEngine.ts` (Core game logic)
-* **API Definitions**: N/A (Client-side application)
-* **Database Models**: N/A (Client-side application)
-* **Key Algorithms**: `src/lib/components/Plinko/PlinkoEngine.ts` (Plinko ball physics)
+- **Main Entry**: `src/routes/+page.svelte` (Main Svelte component for the game)
+- **Configuration**: `src/lib/constants/game.ts` (Game constants and settings)
+- **Core Business Logic**: `src/lib/components/Plinko/PlinkoEngine.ts` (Core game logic)
+- **API Definitions**: N/A (Client-side application)
+- **Database Models**: N/A (Client-side application)
+- **Key Algorithms**: `src/lib/components/Plinko/PlinkoEngine.ts` (Plinko ball physics)
 
 ### Enhancement Impact Areas
 
-* `src/lib/components/Plinko/Plinko.svelte`
-* `src/lib/components/Plinko/PlinkoEngine.ts`
-* `src/lib/stores/game.ts`
-* `src/lib/components/Sidebar/Sidebar.svelte`
+- `src/lib/components/Plinko/Plinko.svelte`
+- `src/lib/components/Plinko/PlinkoEngine.ts`
+- `src/lib/stores/game.ts`
+- `src/lib/components/Sidebar/Sidebar.svelte`
 
 ## High Level Architecture
 
@@ -42,7 +42,7 @@ The Plinko project is a client-side web application built with SvelteKit. The co
 
 | Category       | Technology   | Version | Notes                                                       |
 | :------------- | :----------- | :------ | :---------------------------------------------------------- |
-| Runtime        | Node.js      | 20      | As specified in `.github/workflows/format-check.yaml`      |
+| Runtime        | Node.js      | 20      | As specified in `.github/workflows/format-check.yaml`       |
 | Framework      | SvelteKit    | latest  | As specified in `package.json`                              |
 | Physics Engine | Matter.js    | latest  | As specified in `src/lib/components/Plinko/PlinkoEngine.ts` |
 | Styling        | Tailwind CSS | latest  | As specified in `tailwind.config.js`                        |
@@ -50,9 +50,9 @@ The Plinko project is a client-side web application built with SvelteKit. The co
 
 ### Repository Structure Reality Check
 
-* **Type**: Monorepo
-* **Package Manager**: pnpm
-* **Notable**: The project uses a standard SvelteKit project structure. The core game logic is located in `src/lib/components/Plinko/`.
+- **Type**: Monorepo
+- **Package Manager**: pnpm
+- **Notable**: The project uses a standard SvelteKit project structure. The core game logic is located in `src/lib/components/Plinko/`.
 
 ## Source Tree and Module Organization
 
@@ -82,10 +82,10 @@ plinko/
 
 ### Key Modules and Their Purpose
 
-  * **Plinko**: `src/lib/components/Plinko/` - Contains the core Plinko game components and logic.
-  * **Stores**: `src/lib/stores/` - Contains the Svelte stores for managing game state.
-  * **Constants**: `src/lib/constants/` - Contains the game constants and settings.
-  * **Utils**: `src/lib/utils/` - Contains utility functions.
+- **Plinko**: `src/lib/components/Plinko/` - Contains the core Plinko game components and logic.
+- **Stores**: `src/lib/stores/` - Contains the Svelte stores for managing game state.
+- **Constants**: `src/lib/constants/` - Contains the game constants and settings.
+- **Utils**: `src/lib/utils/` - Contains utility functions.
 
 ## Data Models and APIs
 
@@ -106,17 +106,17 @@ The application does not have any external API dependencies.
 
 ### Workarounds and Gotchas
 
-  * None observed.
+- None observed.
 
 ## Integration Points and External Dependencies
 
 ### External Services
 
-  * None.
+- None.
 
 ### Internal Integration Points
 
-  * The Plinko game component is integrated into the main page at `src/routes/+page.svelte`.
+- The Plinko game component is integrated into the main page at `src/routes/+page.svelte`.
 
 ## Development and Deployment
 
@@ -127,35 +127,35 @@ The application does not have any external API dependencies.
 
 ### Build and Deployment Process
 
-  * **Build Command**: `pnpm build`
-  * **Deployment**: The application can be deployed to any static hosting service.
+- **Build Command**: `pnpm build`
+- **Deployment**: The application can be deployed to any static hosting service.
 
 ## Testing Reality
 
 ### Current Test Coverage
 
-  * The application does not have any automated tests.
+- The application does not have any automated tests.
 
 ### Running Tests
 
-  * N/A
+- N/A
 
 ## If Enhancement PRD Provided - Impact Analysis
 
 ### Files That Will Need Modification
 
-  * `src/lib/components/Plinko/Plinko.svelte`
-  * `src/lib/components/Plinko/PlinkoEngine.ts`
-  * `src/lib/stores/game.ts`
-  * `src/lib/components/Sidebar/Sidebar.svelte`
+- `src/lib/components/Plinko/Plinko.svelte`
+- `src/lib/components/Plinko/PlinkoEngine.ts`
+- `src/lib/stores/game.ts`
+- `src/lib/components/Sidebar/Sidebar.svelte`
 
 ### New Files/Modules Needed
 
-  * None.
+- None.
 
 ### Integration Considerations
 
-  * The new features will need to be integrated with the existing Svelte stores and the Matter.js physics engine.
+- The new features will need to be integrated with the existing Svelte stores and the Matter.js physics engine.
 
 ## Appendix - Useful Commands and Scripts
 
@@ -172,5 +172,5 @@ pnpm format         # Format code
 
 ### Debugging and Troubleshooting
 
-  * Use the browser's developer tools to debug the application.
-  * The Svelte DevTools extension can be used to inspect the Svelte components.
+- Use the browser's developer tools to debug the application.
+- The Svelte DevTools extension can be used to inspect the Svelte components.

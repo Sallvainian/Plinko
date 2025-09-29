@@ -149,6 +149,7 @@ Reviewer: Quinn
 ## Critical Issues
 
 1. **No rate limiting** (Security)
+
    - Risk: Brute force attacks possible
    - Fix: Add rate limiting middleware to auth endpoints
 

@@ -224,7 +224,7 @@
       <div class="relative">
         <input
           id="autoBetInput"
-          value={autoBetInterval === null ? autoBetInput : autoBetsLeft ?? 0}
+          value={autoBetInterval === null ? autoBetInput : (autoBetsLeft ?? 0)}
           disabled={autoBetInterval !== null}
           on:focusout={handleAutoBetInputFocusOut}
           type="number"

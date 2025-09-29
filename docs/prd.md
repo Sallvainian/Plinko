@@ -33,6 +33,8 @@ Transform the existing Plinko game into a classroom competition system where dif
 
 - **FR13**: The admin panel shall be a separate view from the main game board.
 
+- **FR14**: The Plinko board shall be configured to have a static number of 9 rows, and any UI controls for changing the row count must be removed.
+
 ### Non-Functional Requirements
 
 - **NFR1**: The application shall be a static site deployed to Vercel, utilizing its free tier.

@@ -34,7 +34,7 @@
   "devDependencies": {
     "@playwright/test": "^1.44.0",
     "@sveltejs/adapter-static": "^3.0.1",
-    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/kit": "^2.20.6",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/eslint": "^8.56.0",
     "@types/matter-js": "^0.19.6",

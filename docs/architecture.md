@@ -51,7 +51,7 @@ The Plinko project is a client-side web application built with SvelteKit. The co
 ### Repository Structure Reality Check
 
 * **Type**: Monorepo
-* **Package Manager**: npm
+* **Package Manager**: pnpm
 * **Notable**: The project uses a standard SvelteKit project structure. The core game logic is located in `src/lib/components/Plinko/`.
 
 ## Source Tree and Module Organization
@@ -122,12 +122,12 @@ The application does not have any external API dependencies.
 
 ### Local Development Setup
 
-1.  Run `npm install` to install the dependencies.
-2.  Run `npm run dev` to start the development server.
+1.  Run `pnpm install` to install the dependencies.
+2.  Run `pnpm dev` to start the development server.
 
 ### Build and Deployment Process
 
-  * **Build Command**: `npm run build`
+  * **Build Command**: `pnpm build`
   * **Deployment**: The application can be deployed to any static hosting service.
 
 ## Testing Reality
@@ -162,12 +162,12 @@ The application does not have any external API dependencies.
 ### Frequently Used Commands
 
 ```bash
-npm run dev         # Start development server
-npm run build       # Production build
-npm run preview     # Preview production build
-npm run test        # Run tests
-npm run lint        # Run linter
-npm run format      # Format code
+pnpm dev            # Start development server
+pnpm build          # Production build
+pnpm preview        # Preview production build
+pnpm test           # Run tests
+pnpm lint           # Run linter
+pnpm format         # Format code
 ```
 
 ### Debugging and Troubleshooting

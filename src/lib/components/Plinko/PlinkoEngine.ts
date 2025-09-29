@@ -1,4 +1,7 @@
-import { binPayouts } from '$lib/constants/game';
+import { BIN_POINTS, binPayouts } from '$lib/constants/game';
+import { periods, selectedPeriodId, logDrop } from '$lib/stores/periods';
+import { supabase } from '$lib/supabase/client';
+import { enqueue } from '$lib/utils/syncQueue';
 import {
   rowCount,
   winRecords,
@@ -209,6 +212,37 @@ class PlinkoEngine {
     );
     Matter.Composite.add(this.engine.world, ball);
 
+    // Decrement chips immediately for selected period (if any and chips > 0)
+    const selId = get(selectedPeriodId);
+    if (selId !== null) {
+      const list = get(periods);
+      const idx = list.findIndex((p) => p.id === selId);
+      if (idx !== -1) {
+        const p = list[idx];
+        if (p.chips > 0) {
+          const updated = [...list];
+          updated[idx] = { ...p, chips: p.chips - 1 };
+          periods.set(updated);
+          // Attempt remote update; queue on failure
+          supabase
+            .from('periods')
+            .update({ chips: p.chips - 1 })
+            .eq('id', p.id)
+            .then(({ error }: { error: unknown }) => {
+              if (error) {
+                enqueue({
+                  id: uuidv4(),
+                  op: 'update',
+                  table: 'periods',
+                  payload: { id: p.id, chips: p.chips - 1 },
+                  createdAt: Date.now(),
+                });
+              }
+            });
+        }
+      }
+    }
+
     betAmountOfExistingBalls.update((value) => ({ ...value, [ball.id]: this.betAmount }));
     balance.update((balance) => balance - this.betAmount);
   }
@@ -255,11 +289,11 @@ class PlinkoEngine {
   private handleBallEnterBin(ball: Matter.Body) {
     const binIndex = this.pinsLastRowXCoords.findLastIndex((pinX) => pinX < ball.position.x);
     if (binIndex !== -1 && binIndex < this.pinsLastRowXCoords.length - 1) {
+      // Fixed points scoring path will be wired to periods store; keep existing bet logic for now until Sidebar is refactored away
       const betAmount = get(betAmountOfExistingBalls)[ball.id] ?? 0;
       const multiplier = binPayouts[this.rowCount][this.riskLevel][binIndex];
       const payoutValue = betAmount * multiplier;
       const profit = payoutValue - betAmount;
-
       winRecords.update((records) => [
         ...records,
         {
@@ -279,6 +313,40 @@ class PlinkoEngine {
         return [...history, lastTotalProfit + profit];
       });
       balance.update((balance) => balance + payoutValue);
+
+      // Classroom scoring: apply fixed points if a period is selected
+      const selId = get(selectedPeriodId);
+      const pointsApplied = BIN_POINTS[binIndex] ?? 0;
+      if (selId !== null) {
+        const list = get(periods);
+        const idx = list.findIndex((p) => p.id === selId);
+        if (idx !== -1) {
+          const p = list[idx];
+          const updated = [...list];
+          updated[idx] = { ...p, points: p.points + pointsApplied };
+          periods.set(updated);
+          supabase
+            .from('periods')
+            .update({ points: p.points + pointsApplied })
+            .eq('id', p.id)
+            .then(({ error }: { error: unknown }) => {
+              if (error) {
+                enqueue({
+                  id: uuidv4(),
+                  op: 'update',
+                  table: 'periods',
+                  payload: { id: p.id, points: p.points + pointsApplied },
+                  createdAt: Date.now(),
+                });
+              }
+            });
+          logDrop(binIndex, pointsApplied);
+        } else {
+          logDrop(binIndex);
+        }
+      } else {
+        logDrop(binIndex);
+      }
     }
 
     Matter.Composite.remove(this.engine.world, ball);

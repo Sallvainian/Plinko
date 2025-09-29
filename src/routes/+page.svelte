@@ -2,6 +2,7 @@
   import logo from '$lib/assets/logo.svg';
   import Balance from '$lib/components/Balance.svelte';
   import LiveStatsWindow from '$lib/components/LiveStatsWindow/LiveStatsWindow.svelte';
+  import PeriodSelector from '$lib/components/PeriodSelector.svelte';
   import Plinko from '$lib/components/Plinko';
   import SettingsWindow from '$lib/components/SettingsWindow';
   import Sidebar from '$lib/components/Sidebar';
@@ -18,9 +19,10 @@
 
 <div class="relative flex min-h-dvh w-full flex-col">
   <nav class="sticky top-0 z-10 w-full bg-gray-700 px-5 drop-shadow-lg">
-    <div class="mx-auto flex h-14 max-w-7xl items-center justify-between">
+      <div class="mx-auto flex h-14 max-w-7xl items-center justify-between">
       <img src={logo} alt="logo" class="h-6 sm:h-7" />
-      <div class="mx-auto">
+        <div class="mx-auto flex items-center gap-4">
+          <PeriodSelector />
         <Balance />
       </div>
     </div>

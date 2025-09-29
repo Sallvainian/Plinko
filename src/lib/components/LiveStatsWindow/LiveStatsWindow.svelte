@@ -8,6 +8,8 @@
   import DraggableWindow from '../ui/DraggableWindow.svelte';
   import Profit from './Profit.svelte';
   import ProfitHistoryChart from './ProfitHistoryChart.svelte';
+  import Leaderboard from './Leaderboard.svelte';
+  import DropHistory from './DropHistory.svelte';
 
   function resetLiveStats() {
     $winRecords = [];
@@ -22,7 +24,7 @@
   >
     <svelte:fragment slot="title">
       <ChartLine weight="bold" class="text-xl text-slate-300" />
-      <p class="text-sm font-medium text-white">Live Stats</p>
+      <p class="text-sm font-medium text-white">Leaderboard</p>
     </svelte:fragment>
 
     <svelte:fragment slot="title-bar-actions">
@@ -49,8 +51,8 @@
     </svelte:fragment>
 
     <div class="flex flex-col gap-4">
-      <Profit />
-      <ProfitHistoryChart />
+      <Leaderboard />
+      <DropHistory />
     </div>
   </DraggableWindow>
 {/if}

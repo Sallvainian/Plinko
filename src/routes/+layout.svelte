@@ -1,6 +1,8 @@
 <script>
   import '../app.css';
   import ogImage from '$lib/assets/og_image.jpg';
+  import PeriodSelector from '$lib/components/PeriodSelector.svelte';
+  import { selectedPeriod } from '$lib/stores/periods';
 </script>
 
 <svelte:head>
@@ -22,5 +24,17 @@
   <meta property="og:image" content={ogImage} />
   <meta name="google-site-verification" content="lTwaQTJ2H6vMNYMUd9ooaLxzvssiGoQEuoRdsOYNX8g" />
 </svelte:head>
+
+<div class="mx-auto max-w-7xl w-full px-5 py-2 flex items-center justify-between">
+  <PeriodSelector />
+  {#if $selectedPeriod}
+    <div class="text-sm text-slate-300">
+      {$selectedPeriod.nickname} — Chips: {$selectedPeriod.chips}
+      {#if $selectedPeriod.chips === 0}
+        <span class="ml-2 text-red-400">(no chips)</span>
+      {/if}
+    </div>
+  {/if}
+</div>
 
 <slot />

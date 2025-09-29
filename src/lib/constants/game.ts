@@ -46,6 +46,9 @@ export const binProbabilitiesByRowCount: Record<RowCount, number[]> = rowCountOp
   {} as Record<RowCount, number[]>,
 );
 
+// Fixed bin points for the 9-bin board per PRD (left → right)
+export const BIN_POINTS: number[] = [100, 500, 1000, 0, 10000, 0, 1000, 500, 100];
+
 /**
  * Multipliers of each bin by row count and risk level.
  */

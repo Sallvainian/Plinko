@@ -1,0 +1,51 @@
+# Requirements
+
+## Functional Requirements
+
+- **FR1**: The scoring system shall be changed from multipliers to fixed point values for each of the 9 bins as follows: 100, 500, 1000, 0, 10,000, 0, 1000, 500, 100.
+
+- **FR2**: The system will be controlled entirely by a teacher; no student authentication or login shall be required.
+
+- **FR3**: The system shall manage multiple classes identified by a period number (e.g., "Period 1").
+
+- **FR4**: Each class period must have a customizable nickname, a chip count, and a persistent total point score.
+
+- **FR5**: Each period shall start with 5 chips at the beginning of each day.
+
+- **FR6**: A teacher must be able to add or remove chips for any period in increments of one (+1 / -1).
+
+- **FR7**: The system shall prevent a period from dropping a chip if their chip count is zero.
+
+- **FR8**: A teacher-only admin panel shall be accessible at the /admin route and be protected by a simple password.
+
+- **FR9**: From the admin panel, a teacher must be able to: edit period nicknames, add/remove chips, reset all periods' daily chips to the default, and trigger a manual data sync.
+
+- **FR10**: The UI must include a period selector to choose the active class before gameplay.
+
+- **FR11**: The main game UI must display the current period's name and remaining chip count.
+
+- **FR12**: A leaderboard displaying all period nicknames and total scores shall be available and can be toggled on or off from the main view.
+
+- **FR13**: The admin panel shall be a separate view from the main game board.
+
+- **FR14**: The Plinko board shall be configured to have a static number of 9 rows, and any UI controls for changing the row count must be removed.
+
+- **FR15**: All existing betting-related UI and logic (e.g., "Bet Amount", "Risk" level selector, "Auto" mode) shall be removed and replaced by the teacher-managed chip system.
+
+## Non-Functional Requirements
+
+- **NFR1**: The application shall be a static site deployed to Vercel, utilizing its free tier.
+
+- **NFR2**: All persistent data (scores, nicknames, chip counts) shall be stored in a Supabase database, utilizing its free tier.
+
+- **NFR3**: The application must not require serverless functions for its core client-side game logic.
+
+- **NFR4**: Data will auto-sync to Supabase after a period uses its last chip, with a manual sync option available. Failed syncs will be queued for retry without blocking gameplay.
+
+- **NFR5**: The application must be functional on Android-based smartboards (for display) and teacher Chromebooks (for admin).
+
+- **NFR6**: The system requires a standard internet connection to function.
+
+- **NFR7**: The UI for selecting a period must be quick to operate to support transitions within 40-minute class periods.
+
+- **NFR8**: The falling speed of the Plinko chip shall be adjusted to be slightly slower than the current implementation to improve visual tracking on a smartboard.

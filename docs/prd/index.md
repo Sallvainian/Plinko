@@ -1,0 +1,22 @@
+# Product Requirements Document (PRD)
+
+## Table of Contents
+
+- [Product Requirements Document (PRD)](#table-of-contents)
+  - [Executive Summary](./executive-summary.md)
+  - [Epic and Story Structure](./epic-and-story-structure.md)
+    - [Epic 1: Classroom Competition Transformation](./epic-and-story-structure.md#epic-1-classroom-competition-transformation)
+      - [Story 1.1: Refactor Core Game Mechanics](./epic-and-story-structure.md#story-11-refactor-core-game-mechanics)
+      - [Story 1.2: Set Up Supabase Backend](./epic-and-story-structure.md#story-12-set-up-supabase-backend)
+      - [Story 1.3: Integrate Supabase and State Management](./epic-and-story-structure.md#story-13-integrate-supabase-and-state-management)
+      - [Story 1.4: Implement Period Selection](./epic-and-story-structure.md#story-14-implement-period-selection)
+      - [Story 1.5: Connect Gameplay to Scoring and Chip System](./epic-and-story-structure.md#story-15-connect-gameplay-to-scoring-and-chip-system)
+      - [Story 1.6: Implement Leaderboard](./epic-and-story-structure.md#story-16-implement-leaderboard)
+      - [Story 1.7: Create Teacher Admin Panel](./epic-and-story-structure.md#story-17-create-teacher-admin-panel)
+  - [Requirements](./requirements.md)
+    - [Functional Requirements](./requirements.md#functional-requirements)
+    - [Non-Functional Requirements](./requirements.md#non-functional-requirements)
+  - [UI Enhancement Goals](./ui-enhancement-goals.md)
+    - [Integration with Existing UI](./ui-enhancement-goals.md#integration-with-existing-ui)
+    - [Modified/New Screens and Views](./ui-enhancement-goals.md#modifiednew-screens-and-views)
+    - [UI Consistency Requirements](./ui-enhancement-goals.md#ui-consistency-requirements)
